@@ -1,19 +1,6 @@
-class Solution:
+class Solution(object):
     def wiggleSort(self, nums):
         nums.sort()
-
-        n = len(nums)
-        mid = (n - 1) // 2
-        high = n - 1
-
-        result = [0] * n
-
-        for i in range(n):
-            if i % 2 == 0:
-                result[i] = nums[mid]
-                mid -= 1
-            else:
-                result[i] = nums[high]
-                high -= 1
-
-        nums[:] = result
+        mid = (len(nums) + 1) // 2
+        
+        nums[::2], nums[1::2] = nums[:mid][::-1], nums[mid:][::-1]
